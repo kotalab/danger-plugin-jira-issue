@@ -65,11 +65,11 @@ export default function jiraIssue(options: Options) {
   let jiraLocation
   switch (location) {
     case 'title': {
-      jiraLocation = danger.github.pr.title
+      jiraLocation = danger.gitlab.mr.title
       break
     }
     case 'branch': {
-      jiraLocation = danger.github.pr.head.ref
+      jiraLocation = danger.gitlab.mr.source_branch
       break
     }
     default: {
@@ -97,7 +97,7 @@ export default function jiraIssue(options: Options) {
   } else {
     const firstKey = Array.isArray(key) ? key[0] : key
     warn(
-      `Please add the JIRA issue key to the PR ${location} (e.g. ${firstKey}-123)`
+      `Please add the JIRA issue key to the MR ${location} (e.g. ${firstKey}-1)`
     )
   }
 }
