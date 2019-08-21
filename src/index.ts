@@ -97,7 +97,7 @@ export default function jiraIssue(options: Options) {
   } else {
     const jiraKey = Array.isArray(key) ? key.join('|') : key
     fail(
-      `Please add the JIRA issue key to the MR ${location} (e.g. ${jiraKey}-1)`
+      `Please add the JIRA issue key to the MR ${location} (e.g. <code>${jiraKey}-1</code>)`
     )
   }
 }
