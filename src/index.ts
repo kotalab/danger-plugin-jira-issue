@@ -27,6 +27,12 @@ export interface Options {
    * Defaults to `title`
    */
   location?: 'title' | 'branch'
+
+  /**
+   * Should fail instead of warn
+   * Defaults to false
+   */
+  shouldFail?: boolean
 }
 
 const link = (href: string, text: string): string =>
@@ -46,8 +52,13 @@ const ensureUrlEndsWithSlash = (url: string) => {
  * to include the JIRA issue identifier in the pull request title.
  */
 export default function jiraIssue(options: Options) {
-  const { key = '', url = '', emoji = ':link:', location = 'title' } =
-    options || {}
+  const {
+    key = '',
+    url = '',
+    emoji = ':link:',
+    location = 'title',
+    shouldFail = false,
+  } = options || {}
   if (!url) {
     throw Error(`'url' missing - must supply JIRA installation URL`)
   }
@@ -96,8 +107,11 @@ export default function jiraIssue(options: Options) {
     }
   } else {
     const jiraKey = Array.isArray(key) ? key.join('|') : key
-    fail(
-      `Please add the JIRA issue key to the MR ${location} (e.g. <code>${jiraKey}-1</code>)`
-    )
+    const outputString = `Please add the JIRA issue key to the MR ${location} (e.g. <code>${jiraKey}-1</code>)`
+    if (shouldFail) {
+      fail(outputString)
+    } else {
+      warn(outputString)
+    }
   }
 }
