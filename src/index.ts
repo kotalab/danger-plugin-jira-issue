@@ -33,6 +33,13 @@ export interface Options {
    * Defaults to false
    */
   shouldFail?: boolean
+
+  /**
+   * A function to process JIRA issues
+   * @param {string[]} jiraIssues
+   * @returns {void}
+   */
+  issues?: (jiraIssues: string[]) => void
 }
 
 const link = (href: string, text: string): string =>
@@ -104,6 +111,11 @@ export default function jiraIssue(options: Options) {
       message(options.format(emoji, jiraUrls))
     } else {
       message(`${emoji} ${jiraUrls.join(', ')}`)
+    }
+
+    // custom function to consume JIRA issues
+    if (options.issues) {
+      options.issues(jiraIssues)
     }
   } else {
     const jiraKey = Array.isArray(key) ? key.join('|') : key
