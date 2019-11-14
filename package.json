@@ -1,6 +1,6 @@
 {
-  "name": "danger-plugin-jira-issue-gitlab",
-  "version": "1.4.7-vinone",
+  "name": "danger-plugin-jira-issue",
+  "version": "0.0.0-development",
   "description": "Danger plugin to link JIRA issue in pull request",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/diesel-engineer/danger-plugin-jira-issue.git"
+    "url": "https://github.com/kotalab/danger-plugin-jira-issue.git"
   },
   "keywords": [
     "danger",
@@ -29,9 +29,9 @@
   "author": "Macklin Underdown <macklinu@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/diesel-engineer/danger-plugin-jira-issue/issues"
+    "url": "https://github.com/kotalab/danger-plugin-jira-issue/issues"
   },
-  "homepage": "https://github.com/diesel-engineer/danger-plugin-jira-issue#readme",
+  "homepage": "https://github.com/kotalab/danger-plugin-jira-issue#readme",
   "engines": {
     "node": ">= 4.0.0"
   },
